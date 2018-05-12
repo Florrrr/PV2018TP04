@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Convertidor de grados</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlGrados" header="Convertidor de Grados" footer="EDM 2018">
+            <h:form id="frmGrados">
+                <p:panelGrid id="tblAll" columns="2">
+                    <h:panelGrid id="tblGrados" columns="2">
+                        <p:outputLabel value="Ingrese grado:"/>
+                        <p:inputText id="txtGradoIngresar" value="#{gradoFormBean.gradoIngresado}"/>
+                        <p:outputLabel/>
+                        <p:commandButton id="btnIngresarGrado" value="Ingresar" actionListener="#{gradoFormBean.empezarConvertidor()}" update="frmGrados"/>
+                        <p:outputLabel value="Grado Inicial:"/>
+                        <p:outputLabel value="#{gradoFormBean.aux}"/>
+                        <p:outputLabel value="Convertido:"/>
+                        <p:outputLabel value="#{gradoFormBean.res} #{gradoFormBean.nombreGrado}"/>
+                        <p:commandButton id="restart" value="Reiniciar" actionListener="#{gradoFormBean.reiniciar()}" update="frmGrados" disabled="#{gradoFormBean.des}"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="¿Que tipo de grado es?"/>
+                        <h:panelGrid id="tblIngresarGrado" columns="1">
+                            <p:commandButton id="btnCelcius" value="°C" actionListener="#{gradoFormBean.seleccionarGrados(1)}" disabled="#{gradoFormBean.des}" update="frmGrados"/>
+                            <p:commandButton id="btnFahrenheit" value="°F" actionListener="#{gradoFormBean.seleccionarGrados(2)}" disabled="#{gradoFormBean.des}" update="frmGrados"/>
+                            <p:commandButton id="btnKelvin" value="K" actionListener="#{gradoFormBean.seleccionarGrados(3)}" disabled="#{gradoFormBean.des}" update="frmGrados"/>
+                        </h:panelGrid>
+                        <p:outputLabel value="¿A que tipo de grado convertir?"/>
+                        <h:panelGrid id="tblTrnasforGrado" columns="1">
+                            <p:commandButton id="btnConvC" value="°C" actionListener="#{gradoFormBean.convertirGrados(1)}" update="frmGrados" disabled="#{gradoFormBean.c}"/>
+                            <p:commandButton id="btnConvF" value="°F" actionListener="#{gradoFormBean.convertirGrados(2)}" update="frmGrados" disabled="#{gradoFormBean.f}"/>
+                            <p:commandButton id="btnConvK" value="K" actionListener="#{gradoFormBean.convertirGrados(3)}" update="frmGrados" disabled="#{gradoFormBean.k}"/>
+                        </h:panelGrid>
+                    </h:panelGrid>             
+                </p:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+

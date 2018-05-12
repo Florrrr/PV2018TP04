@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro Numeros</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlNumero" header="Registrar Numeros">
+            <h:form id="frmNumero">
+                <p:panelGrid id="tblNumero" columns="2" >
+                    <h:panelGrid id="tblIngresoNumero" columns="2">
+                        <p:outputLabel id="lblNumero" value="Ingrese Numero: "/>
+                        <p:inputText id="txtNumero" value="#{numeroFormBean.num}"/>
+                        <p:outputLabel/>
+                        <p:commandButton id="btnGuardarNumero" value="Guardar" actionListener="#{numeroFormBean.ingresarNumero()}" update="frmNumero"/>
+                        <h:panelGrid id="tblOperacionNumero" columns="1">
+                            <p:outputLabel value="Mostrar"/>
+                            <p:commandButton value="Mayor" actionListener="#{numeroFormBean.buscarMayor()}" update="dtTbResultado"
+                                             disabled="#{numeroFormBean.deshabilitador}"/>
+                            <p:commandButton value="Menor" actionListener="#{numeroFormBean.buscarMenor()}" update="dtTbResultado"
+                                             disabled="#{numeroFormBean.deshabilitador}"/>
+                            <p:commandButton value="Promedio" actionListener="#{numeroFormBean.calcularPromedio()}" update="dtTbResultado"
+                                             disabled="#{numeroFormBean.deshabilitador}"/>
+                        </h:panelGrid>
+                        <h:panelGrid id="dtTbResultado" columns="1">
+                            <p:outputLabel value="Mayor: #{numeroFormBean.mayor}"/>
+                            <p:outputLabel value="Menor: #{numeroFormBean.menor}"/>
+                            <p:outputLabel value="Promedio: #{numeroFormBean.prom}"/>
+                        </h:panelGrid>
+                        <p:outputLabel value="Borrar datos"/>
+                        <p:commandButton id="btnLimpiar" value="Limpiar" actionListener="#{numeroFormBean.limpiar()}" update="frmNumero" disabled="#{numeroFormBean.deshabilitador}"/>
+                    </h:panelGrid>
+                    <p:dataTable id="dtTbNumero" value="#{numeroFormBean.numero.numeros}" var="cadaNumero" emptyMessage="Sin registros">
+                        <p:column headerText="Numeros" width="200">
+                            <p:outputLabel value="#{cadaNumero}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:panelGrid>
+        </h:form>
+        </p:panel>
+    </h:body>
+</html>
