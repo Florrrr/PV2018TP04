@@ -61,11 +61,13 @@
                 </h:panelGrid>
             </h:form>
         </p:panel>
+        <p:commandButton id="btnV5" action="#{conectorFormBean.navega(9)}" value="Volver"/>
         <p:dialog id="dlgModificarAuto"
                   widgetVar="modificarAuto"
                   header="Modificiacion de Auto"
                   resizable="false"
                   showEffect="explode"
+                  width="400"
                   hideEffect="explode" modal="true">
             <h:form id="frmModificarAuto">
                 <p:panelGrid id="Eliminacion" columns="2">
@@ -110,6 +112,7 @@
             </h:form>
         </p:confirmDialog>
         <p:dialog id="dlgEliminarAuto"
+                  width="400"
                   widgetVar="eliminarAuto"
                   header="Eliminacion de Auto"
                   resizable="false"

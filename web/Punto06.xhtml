@@ -14,11 +14,10 @@
                     <p:inputText id="txtIsbn" value="#{libroFormBean.isbn}"/>
                     <p:outputLabel id="lblTitulo" value="Ingrese Titulo: "/>
                     <p:inputText id="txtTitulo" value="#{libroFormBean.tit}"/>
-                    <p:outputLabel id="lblAutor" value="Ingrese Autor: "/>
+                    <p:outputLabel id="lblAutor" value="Seleccione Autor: "/>
                     <p:selectOneMenu>
                         
                     </p:selectOneMenu>
-                    <p:inputText id="txtAutor" value="#{libroFormBean.aut}"/>
                     <p:outputLabel id="lblPrecio" value="Ingrese Precio: "/>
                     <p:inputNumber id="txtPrecio" decimalPlaces="2"
                                    thousandSeparator="." decimalSeparator=","
@@ -44,6 +43,7 @@
         </h:panelGrid>
         </h:form>
         </p:panel>
+        <p:commandButton id="btnV6" action="#{conectorFormBean.navega(9)}" value="Volver"/>
     </h:body>
 </html>
 
