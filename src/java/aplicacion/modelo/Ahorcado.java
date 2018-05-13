@@ -16,11 +16,13 @@ public class Ahorcado implements Serializable{
     private String palabraAdivinar;
     private char[] palabraAhorcado;
     private int intentos;
+    private String imagen;
 
-    public Ahorcado(String palabraAdivinar, char[] palabraAhorcado, int intentos) {
+    public Ahorcado(String palabraAdivinar, char[] palabraAhorcado, int intentos, String imagen) {
         this.palabraAdivinar = palabraAdivinar;
         this.palabraAhorcado = palabraAhorcado;
         this.intentos = intentos;
+        this.imagen = imagen;
     }
 
     public Ahorcado() {
@@ -28,10 +30,12 @@ public class Ahorcado implements Serializable{
         palabraAdivinar=new String();
         palabraAhorcado=new char[10];
         intentos=5;
+        imagen="/images/Ahorcado0.png";
     }
 
     public void empezarJuego(String palabra){
         setPalabraAdivinar(palabra);
+        setImagen("/images/Ahorcado0.png");
     }
     
     public ArrayList<String> getPalabraAhorcadoFormato(){
@@ -52,6 +56,28 @@ public class Ahorcado implements Serializable{
         }
         if(encontrado==false){
             setIntentos(getIntentos()-1);
+            switch(getIntentos()){
+                case 4:{
+                    setImagen("/images/Ahorcado1.png");
+                    break;
+                }
+                case 3:{
+                    setImagen("/images/Ahorcado2.png");
+                    break;
+                }
+                case 2:{
+                    setImagen("/images/Ahorcado3.png");
+                    break;
+                }
+                case 1:{
+                    setImagen("/images/Ahorcado4.png");
+                    break;
+                }
+                case 0:{
+                    setImagen("/images/Ahorcado5.jpg");
+                    break;
+                }
+            }
         }
         //Sigue switch
         //En este lugar va la seleccion de la imagen
@@ -108,5 +134,19 @@ public class Ahorcado implements Serializable{
      */
     public void setIntentos(int intentos) {
         this.intentos = intentos;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

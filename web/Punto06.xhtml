@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registro Libros</title>
     </h:head>
@@ -15,8 +16,11 @@
                     <p:outputLabel id="lblTitulo" value="Ingrese Titulo: "/>
                     <p:inputText id="txtTitulo" value="#{libroFormBean.tit}"/>
                     <p:outputLabel id="lblAutor" value="Seleccione Autor: "/>
-                    <p:selectOneMenu>
-                        
+                    <p:selectOneMenu id="autor" value="#{libroFormBean.unAutor}"
+                                     converter="omnifaces.SelectItemsConverter">
+                        <f:selectItems value="#{libroFormBean.aut}" var="a"
+                                       itemLabel="#{a.apellido}"
+                                       itemValue="#{a}"/>
                     </p:selectOneMenu>
                     <p:outputLabel id="lblPrecio" value="Ingrese Precio: "/>
                     <p:inputNumber id="txtPrecio" decimalPlaces="2"

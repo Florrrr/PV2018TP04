@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import aplicacion.modelo.Libro;
 import aplicacion.datos.ListaLibro;
+import aplicacion.modelo.Autor;
+import java.util.ArrayList;
 
 //hola
 /**
@@ -23,21 +25,13 @@ public class LibroFormBean implements Serializable{
     private ListaLibro listaLibro;
     private int isbn;
     private String tit;
-    private String aut;
     private double pre;
+    private ArrayList<Autor> aut;
+    private String unAutor;
     
     public void registrarLibro(){
-        setLibro(new Libro(getIsbn(),getTit(),getAut(),getPre()));
+        setLibro(new Libro(getIsbn(),getTit(),getUnAutor(),getPre()));
         getListaLibro().getListadoLibro().add(getLibro());
-    }
-
-    public LibroFormBean(Libro libro, ListaLibro listaLibro, int isbn, String tit, String aut, double pre) {
-        this.libro = libro;
-        this.listaLibro = listaLibro;
-        this.isbn = isbn;
-        this.tit = tit;
-        this.aut = aut;
-        this.pre = pre;
     }
     
     /**
@@ -45,6 +39,12 @@ public class LibroFormBean implements Serializable{
      */
     public LibroFormBean() {
         listaLibro=new ListaLibro();
+        aut=new ArrayList();
+        aut.add(new Autor("42222222","Joel","Chaya"));
+        aut.add(new Autor("43333333","Pepi","Funes"));
+        aut.add(new Autor("44444444","Pablo","Xtremo"));
+        aut.add(new Autor("45555555","Pepa","Pig"));
+        aut.add(new Autor("46666666","Pedro","Samvrano"));
     }
 
     /**
@@ -104,20 +104,6 @@ public class LibroFormBean implements Serializable{
     }
 
     /**
-     * @return the aut
-     */
-    public String getAut() {
-        return aut;
-    }
-
-    /**
-     * @param aut the aut to set
-     */
-    public void setAut(String aut) {
-        this.aut = aut;
-    }
-
-    /**
      * @return the pre
      */
     public double getPre() {
@@ -129,6 +115,34 @@ public class LibroFormBean implements Serializable{
      */
     public void setPre(double pre) {
         this.pre = pre;
+    }
+
+    /**
+     * @return the aut
+     */
+    public ArrayList<Autor> getAut() {
+        return aut;
+    }
+
+    /**
+     * @param aut the aut to set
+     */
+    public void setAut(ArrayList<Autor> aut) {
+        this.aut = aut;
+    }
+
+    /**
+     * @return the unAutor
+     */
+    public String getUnAutor() {
+        return unAutor;
+    }
+
+    /**
+     * @param unAutor the unAutor to set
+     */
+    public void setUnAutor(String unAutor) {
+        this.unAutor = unAutor;
     }
     
 }

@@ -46,14 +46,13 @@ public class AhorcadoFormBean implements Serializable{
         if(letraEncontrada==true){
             if(getAhorcado().juegoGanado()==true){
                 facesContext.addMessage(null,new 
-                FacesMessage(FacesMessage.SEVERITY_FATAL,"Fin del juego","Ganaste"));
+                FacesMessage(FacesMessage.SEVERITY_INFO,"Fin del juego","Ganaste"));
             } 
         }
         else{
             if(getAhorcado().getIntentos()==0){
                 facesContext.addMessage(null,new 
                 FacesMessage(FacesMessage.SEVERITY_ERROR,"Fin del juego","Perdiste"));
-                nuevoJuego();
             }
         }
     }

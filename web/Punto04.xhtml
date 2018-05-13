@@ -10,7 +10,7 @@
         <p:panel id="pnlAhorcado" header="Juego Ahorcado" footer="EDM 2018">
             <h:form id="frmAhorcado">
                 <p:messages id="msgAhorcado" showDetail="true"/>
-                <p:panelGrid id="tblAhorcado" columns="4">
+                <h:panelGrid id="tblAhorcado" columns="4">
                     <p:dataGrid id="tblPalabra" columns="10"
                                 emptyMessage="Ingrese la palabra a adivinar"
                                 var="palabra" 
@@ -27,8 +27,8 @@
                                      disabled="#{ahorcadoFormBean.componenteDeshabilitador}"
                                      actionListener="#{ahorcadoFormBean.empezarJuego()}"
                                      update="frmAhorcado"/>
-                    <p:panelGrid columns="3">
-                        <p:outputLabel value="Letra"/>
+                    <h:panelGrid columns="3">
+                        <p:outputLabel value="Letra: "/>
                         <p:inputText id="txtLetraIngresada" required="true" maxlength="1"
                                      size="1" value="#{ahorcadoFormBean.letraIngresada}"
                                      disabled="#{ahorcadoFormBean.componenteDeshabilitador eq false}"/>
@@ -36,19 +36,22 @@
                                          disabled="#{ahorcadoFormBean.componenteDeshabilitador eq false}"
                                          update="frmAhorcado" 
                                          actionListener="#{ahorcadoFormBean.controlarLetra()}"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
                     <p:outputLabel value="Intentos: "/>
                     <p:outputLabel value="#{ahorcadoFormBean.ahorcado.intentos}"/>             
-                </p:panelGrid>
-                <p:panelGrid id="pnlGrafico" columns="1">
+                </h:panelGrid>
+                <h:panelGrid id="pnlGrafico" columns="2">
                     <p:commandButton value="Nuevo Juego"
                                      update="frmAhorcado" 
                                      disabled="#{ahorcadoFormBean.componenteDeshabilitador eq false}"
                                      actionListener="#{ahorcadoFormBean.nuevoJuego()}"/>
-                    
-                </p:panelGrid>
+                    <p:graphicImage id="imgAhorcado"
+                                    value="#{ahorcadoFormBean.ahorcado.imagen}"/>
+                </h:panelGrid>
             </h:form>
         </p:panel>
-        <p:commandButton id="btnV4" action="#{conectorFormBean.navega(9)}" value="Volver"/>
+        <h:form>
+        <p:commandButton action="#{conectorFormBean.navega(9)}" value="Volver"/>
+        </h:form>
     </h:body>
 </html>
